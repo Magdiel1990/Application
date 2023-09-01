@@ -1,57 +1,67 @@
 <?php
-    require_once("partials/head.php");
-?>
-    <main >
-        <div class="text-center text-lg-start">
-            <div class="card mb-3">
-                <div class="row g-0 d-flex align-items-center">
-                    <div class="col-lg-4 d-none d-lg-flex">
-                        <img src="https://hoy.com.do/wp-content/uploads/2020/03/10-cursos-online-gratuitos-aprender-ingles-810x455.jpg" alt="Trendy Pants and Shoes"
-                        class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="card-body py-5 px-md-5">
+//Raíz de directorio
+define("root", "/application/");
 
-                        <form>
-                            <!-- Email -->
-                            <div class="form-outline mb-4">
-                            <input type="email" id="form2Example1" class="form-control" />
-                            <label class="form-label" for="form2Example1">Email address</label>
-                            </div>
+//Url requerida
+$uri = parse_url($_SERVER["REQUEST_URI"])['path']; 
 
-                            <!-- Contraseña -->
-                            <div class="form-outline mb-4">
-                            <input type="password" id="form2Example2" class="form-control" />
-                            <label class="form-label" for="form2Example2">Password</label>
-                            </div>
+//Parámetros que vienen con la url
+$param = isset(parse_url($_SERVER["REQUEST_URI"])['query']) ? parse_url($_SERVER["REQUEST_URI"])['query'] : "";
 
-                            <div class="row mb-4">
-                            <div class="col d-flex justify-content-center">
-                                <!-- Checkbox -->
-                                <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                                <label class="form-check-label" for="form2Example31"> Remember me </label>
-                                </div>
-                            </div>
+//Si no hay parámetros
+if($param == "") {
+    $routes = [
+    root => "controllers/index.controller.php" ,    
+    root. "login" => "controllers/login.controller.php"/*,
+    root. "logout" => "controllers/logout.controller.php",
+    root. "random" => "controllers/random.controller.php",
+    root. "create" => "controllers/create.controller.php",
+    root. "custom-inclusive" => "controllers/custom-recipe-inclusive.controller.php",
+    root. "custom-exclusive" => "controllers/custom-recipe-exclusive.controller.php",
+    root. "profile" => "controllers/profile.controller.php",
+    root. "ingredients" => "controllers/ingredients.controller.php",
+    root. "add-recipe" => "controllers/add-recipe.controller.php",
+    root. "categories" => "controllers/categories.controller.php",
+    root. "user" => "controllers/users.controller.php", 
+    root. "email" => "controllers/email.controller.php",
+    root. "signup" => "controllers/signup.controller.php",
+    root. "recovery" => "controllers/recovery.controller.php",
+    root. "error404" => "controllers/404.controller.php",
+    root. "terms-and-conditions" => "controllers/terms.controller.php",   
+    root. "not-found" => "controllers/notfound.controller.php",
+    root. "notifications" => "controllers/notification.controller.php",
+    root. "recycle" => "controllers/recycle.controller.php",
+    root. "reactivate-account" => "controllers/reactivate-account.controller.php",
+    root. "reactivate" => "controllers/reactivate.controller.php",
+    root. "settings" => "controllers/settings.controller.php",
+    root. "update" => "controllers/update.controller.php",
+    root. "diet" => "controllers/diet.controller.php"  */
+    ];
+//Si hay parámetros
+} else {
+    $routes = [    /*
+    root. "recipes" => "controllers/recipes.controller.php",
+    root. "random" => "controllers/random.controller.php",
+    root. "delete" => "controllers/delete.controller.php",
+    root. "reset" => "controllers/reset.controller.php",
+    root. "edit" => "controllers/edit.controller.php",
+    root. "create" => "controllers/create.controller.php",
+    root. "update" => "controllers/update.controller.php",
+    root. "share" => "controllers/share.controller.php",
+    root. "user-recipes" => "controllers/recipes-list.controller.php",
+    root. "reset-password" => "controllers/reset-password.controller.php",
+    root. "recovery-page" => "controllers/recovery-page.controller.php",
+    root. "password-change" => "controllers/pass-change.controller.php",
+    root. "email_confirm" => "controllers/email_confirm.controller.php"      */
+    ];
+}
 
-                            <div class="col">
-                                <!-- Recuperación de contraseñas -->
-                                <a href="#!">Forgot password?</a>
-                            </div>
-                            </div>
-
-                            <!-- Botón de logeo -->
-                            <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
-
-                        </form>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-<?php
-    require_once ("partials/footer.php");
+//Si la Url existe se llama al controlador
+if(array_key_exists($uri, $routes)) {
+    require $routes[$uri];
+//Si no existe se llama a error 404
+} else {
+    http_response_code(404);
+    require "views/error/404.php";
+}
 ?>
