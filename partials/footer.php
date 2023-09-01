@@ -1,9 +1,9 @@
-    <footer class="text-center p-3">
+    <footer class="text-center py-2 mt-1">
     <!-- Copyright -->
         <div class="text-white">
-            <h5 class="text-white d-inline">
+            <h6 class="text-white d-inline">
             © <?php echo date('Y'); ?> Copyright:
-            Magdiel Castillo Mills. Todos los derechos reservados.</h5>
+            Magdiel Castillo Mills. Todos los derechos reservados.</h6>
         </div>
         <div>
     <!-- Facebook -->
