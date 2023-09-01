@@ -7,7 +7,7 @@ session_start();
 
 //Conexión a la base de datos
 require_once ("classes/db_connection.class.php");
-$dbConection = new DBConnection("localhost:3306", "root", "123456", "foodbase");
+$dbConection = new DBConnection("localhost:3306", "root", "123456", "courses");
 $conn = $dbConection -> dbConnection ();
 
 //Verificar el usuario y la contraseña

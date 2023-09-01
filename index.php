@@ -12,10 +12,10 @@ $param = isset(parse_url($_SERVER["REQUEST_URI"])['query']) ? parse_url($_SERVER
 if($param == "") {
     $routes = [
     root => "controllers/index.controller.php" ,    
-    root. "login" => "controllers/login.controller.php"/*,
-    root. "logout" => "controllers/logout.controller.php",
-    root. "random" => "controllers/random.controller.php",
-    root. "create" => "controllers/create.controller.php",
+    root. "login" => "controllers/login.controller.php",
+    root. "salir" => "controllers/logout.controller.php",
+    root. "alumnos" => "controllers/students.controller.php",
+    root. "cursos" => "controllers/courses.controller.php"/*,
     root. "custom-inclusive" => "controllers/custom-recipe-inclusive.controller.php",
     root. "custom-exclusive" => "controllers/custom-recipe-exclusive.controller.php",
     root. "profile" => "controllers/profile.controller.php",

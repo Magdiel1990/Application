@@ -1,7 +1,7 @@
 <?php
 //Conexión a la base de datos
 require_once ("classes/db_connection.class.php");
-$dbConection = new DBConnection("localhost:3306", "root", "123456", "foodbase");
+$dbConection = new DBConnection("localhost:3306", "root", "123456", "courses");
 $conn = $dbConection -> dbConnection ();
 
 //Nombre de la sesión
@@ -12,7 +12,7 @@ session_start();
 
 //Verificar el estado del usuario
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: " . root . "login");
     exit;
 } else {    
 //Si no está logueado
@@ -39,7 +39,7 @@ if (!isset($_SESSION['username'])) {
 //Reasignar el usuario
         $_SESSION['username'] = $username;
 
-        header("Location: login.php");           
+        header("Location: " . root . "login");        
     } else {
 //Guardar el tiempo de sesión del usuario
         $_SESSION["last_access"] = $currentTime;
