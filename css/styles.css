@@ -23,3 +23,43 @@ main {
 footer {
     height: 7rem;
 }
+
+/*404 page*/
+.error {
+    background-color: #95c2de;
+}
+.mainbox {
+    background-color: #95c2de;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.err {
+    color: #ffffff;
+    font-size: 11rem;
+}
+.msg404 {
+    text-align: center;
+}
+.far {
+    font-size: 8.5rem;
+    color: #ffffff;
+}
+.err2 {
+    color: #ffffff;
+    font-size: 11rem;
+}
+.msg {
+    text-align: center;
+    font-size: 1.8rem;
+    margin: 0 1.7rem;
+}
+.errorlink {
+    text-decoration: none;
+    color: white;
+}
+.errorlink:hover {
+    text-decoration: underline;
+}

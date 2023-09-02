@@ -1,4 +1,4 @@
-    <footer class="text-center bg-primary py-2 mt-1">
+    <footer class="text-center bg-primary py-2">
     <!-- Copyright -->
         <div class="text-white">
             <h6 class="text-white d-inline">

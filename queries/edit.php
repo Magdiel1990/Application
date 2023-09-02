@@ -45,7 +45,10 @@ if(isset($_GET["courseid"])) {
         </div> 
     </main>
 <?php
-    } 
+    } else {
+        http_response_code(404);
+        require "views/error/404.php";
+    }
 }
 
 
