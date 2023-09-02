@@ -10,5 +10,7 @@
     </main>
 
 <?php
+    //Cerrar la conexión a la base de datos
+    $conn -> close ();
     require_once ("partials/footer.php");
 ?>

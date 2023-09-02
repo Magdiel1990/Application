@@ -6,10 +6,18 @@
     require_once("partials/nav.php");    
 ?>
 
-<main class="container py-5 px-2">
+<main class="container py-4 px-2">
 <!-- Formulario para agregar cursos -->
-    <div class="row mt-5 text-center justify-content-center">
-        <div class="col-md-4 mb-4">
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-4 mb-4 text-center">
+            <?php
+                // Mensaje 
+                if(isset($_SESSION['message'])) {
+                    echo "<span class='text-" . $_SESSION['message_alert'] . "'>" . $_SESSION['message'] ."</span>";
+                    //Eliminar mensaje
+                    unset($_SESSION['message_alert'], $_SESSION['message']);
+                }
+            ?>
             <form id="course_form" method="POST" action="<?php echo root;?>create" autocomplete="off">
                 
                 <div class="input-group mb-3">
@@ -26,24 +34,23 @@
 <!-- Lista de cursos -->
         <div class="col table-responsive-sm">
             <table class="table table-sm shadow">
-                <thead>
-                    <tr class="table_header">
+                <thead class="text-center">
+                    <tr>
                         <th class='px-2' scope="col">Cursos</th>
                         <th class='px-2' scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>                
                     <?php
-                        $result = $conn -> query("SELECT c.id, c.name FROM courses AS c JOIN courses_details AS cd JOIN users AS u ON cd.userid = u.id WHERE u.username = '" . $_SESSION ["username"]. "';");
+                        $result = $conn -> query("SELECT id, name FROM courses;");
+
                         if($result -> num_rows > 0){
                             while($row = $result -> fetch_assoc()){
                                 $html = "<tr>";
-                                $html .= "<td class='px-2'>" . ucfirst($row['name']) . "</td>";
-                                $html .= "<div class='btn-group' role='group'>";
-
-                                $html .= "<a href='" . root . "delete?courseid=" . $row['id'] . "' " . "class='btn btn-outline-danger' title='Eliminar'><i class='fa-solid fa-trash'></i></a>";
-                                $html .= "<a href='" . root . "edit?courseid=" . $row['id'] . "' " . "class='btn btn-outline-secondary' title='Editar'><i class='fa-solid fa-pen'></i></a>";
-                                $html .= "</div>";
+                                $html .= "<td class='px-4'>" . ucfirst($row['name']) . "</td>";
+                                $html .= "<td class='text-center'>";
+                                $html .= "<a href='" . root . "delete?courseid=" . $row['id'] . "' " . "class='btn btn-danger' title='Eliminar'>Eliminar</a>";
+                                $html .= "<a href='" . root . "edit?courseid=" . $row['id'] . "' " . "class='btn btn-info mx-1' title='Editar'>Editar</a>";
                                 $html .= "</td>";
                                 $html .= "</tr>";
                                 echo $html;
@@ -65,5 +72,7 @@
 </main>
 
 <?php
+    //Cerrar la conexión a la base de datos
+    $conn -> close ();
     require_once ("partials/footer.php");
 ?>

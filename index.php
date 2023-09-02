@@ -39,20 +39,11 @@ if($param == "") {
     ];
 //Si hay parámetros
 } else {
-    $routes = [    /*
-    root. "recipes" => "controllers/recipes.controller.php",
-    root. "random" => "controllers/random.controller.php",
+    $routes = [
     root. "delete" => "controllers/delete.controller.php",
-    root. "reset" => "controllers/reset.controller.php",
     root. "edit" => "controllers/edit.controller.php",
     root. "create" => "controllers/create.controller.php",
     root. "update" => "controllers/update.controller.php",
-    root. "share" => "controllers/share.controller.php",
-    root. "user-recipes" => "controllers/recipes-list.controller.php",
-    root. "reset-password" => "controllers/reset-password.controller.php",
-    root. "recovery-page" => "controllers/recovery-page.controller.php",
-    root. "password-change" => "controllers/pass-change.controller.php",
-    root. "email_confirm" => "controllers/email_confirm.controller.php"      */
     ];
 }
 
