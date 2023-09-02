@@ -16,7 +16,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $password = $_POST['password'];
 
 //Verificar que el usuario existe
-    $stmt = $conn -> prepare("SELECT id, username, password, firstname, lastname, email FROM users WHERE username = ?;"); 
+    $stmt = $conn -> prepare("SELECT id, username, password, firstname, lastname, email, role_id FROM users WHERE username = ?;"); 
     $stmt->bind_param("s", $username);
     $stmt->execute();
 
@@ -37,6 +37,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 $_SESSION['lastname'] = $row['lastname'];
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['email'] = $row['email'];
+                $_SESSION['role_id'] = $row['role_id'];
 
 //último acceso
                 $_SESSION["last_access"] = date("Y-m-j H:i:s"); 

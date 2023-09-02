@@ -11,7 +11,7 @@
 
 <main class="container">
 <!-- Formulario para agregar cursos -->
-    <div class="row mt-5 justify-content-center">
+    <div class="row my-5 justify-content-center">
         <div class="col-md-4 mb-4 text-center">
             <?php
                 // Mensaje 
@@ -61,8 +61,6 @@
                                     ?>
                                 </select> 
                             </div>
-
-                            <!-- SELECT with the role-->
 
                             <div class="mb-3">
                                 <input class="btn btn-success"  type="submit" value="Agregar">

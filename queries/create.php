@@ -7,6 +7,8 @@ require_once ("classes/filter.class.php");
 $dbConection = new DBConnection ("localhost:3306", "root", "123456", "courses");
 $conn = $dbConection -> dbConnection ();
 
+/***************************Creación de curso***********************************/
+
 if(isset($_POST["course"])) {
     if($_POST["course"] === "") {
         $_SESSION['message'] = "Escriba el nombre del curso";
@@ -64,6 +66,8 @@ if(isset($_POST["course"])) {
         }
     }
 }
+
+/***************************Creación de usuario**********************************/
 
 if(isset($_POST["user"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["password"]) && isset($_POST["email"]) && isset($_POST["role"])) {
     if($_POST["user"] === "" || $_POST["firstname"] === "" || $_POST["lastname"] === "" || $_POST["password"] === "" || $_POST["email"] === ""|| $_POST["role"] === "") {
