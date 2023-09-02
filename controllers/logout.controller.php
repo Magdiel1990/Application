@@ -1,3 +1,3 @@
 <?php
-    require "pages/logout.php";
+    require "views/pages/logout.view.php";
 ?>

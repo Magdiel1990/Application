@@ -1,3 +1,3 @@
 <?php
-    require "pages/students.php";
+    require "views/pages/students.view.php";
 ?>
