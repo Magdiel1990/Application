@@ -5,6 +5,8 @@ require_once ("classes/db_connection.class.php");
 $dbConection = new DBConnection ("localhost:3306", "root", "123456", "courses");
 $conn = $dbConection -> dbConnection ();
 
+/****************************COURSE DELETION **************************/
+
 if(isset($_GET["courseid"])) {
     $courseId = $_GET["courseid"];
 
@@ -30,6 +32,32 @@ if(isset($_GET["courseid"])) {
     }
 }
 
+/****************************USERS DELETION **************************/
+
+if(isset($_GET["userid"])) {
+    $userId = $_GET["userid"];
+
+//Verificar que ese id existe
+    if($conn -> query ("SELECT id FROM users WHERE id = '$userId';")) {
+        $result = $conn -> query ("DELETE FROM users WHERE id = '$userId';");
+        if($result) {
+            $_SESSION['message'] = "Usuario eliminado";
+            $_SESSION['message_alert'] = "success";   
+        
+            header('Location: ' . root . 'alumnos');
+        } else {
+            $_SESSION['message'] = "Error al eliminar este usuario";
+            $_SESSION['message_alert'] = "danger";        
+    
+            header('Location: ' . root . 'alumnos');
+        }
+    } else {
+        $_SESSION['message'] = "Este usuario no existe";
+        $_SESSION['message_alert'] = "danger";        
+
+        header('Location: ' . root . 'alumnos');
+    }
+}
 
 //Cerrar la conexión a la base de datos
 $conn -> close ();

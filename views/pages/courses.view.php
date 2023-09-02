@@ -6,7 +6,7 @@
     require_once("partials/nav.php");    
 ?>
 
-<main class="container py-4 px-2">
+<main class="container py-4 px-2 mb-1">
 <!-- Formulario para agregar cursos -->
     <div class="row mt-5 justify-content-center">
         <div class="col-md-4 mb-4 text-center">

@@ -79,7 +79,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         </script>
     </head>
     <body>
-        <main class="container p-4">
+        <main class="container p-4 mb-5">
             <div class="text-center text-lg-start">
                 <div class="card mb-3">
                     <div class="row p-4 g-0 d-flex justify-content-center align-items-center">
@@ -102,12 +102,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                                         <label class="form-label" for="password">Contraseña</label>
                                     </div>
 
-                                    <div class="row mb-4">
-                                        <div class="col text-center">
-                                            <!-- Recuperación de contraseñas -->
-                                            <a href="#" style="text-decoration: none;">Olvidaste la contraseña?</a>
-                                        </div>
-                                    </div>
                                     <div class="text-center">
                                     <!-- Botón de logeo -->
                                         <input type="submit" class="btn btn-primary mb-4" value="Acceder">

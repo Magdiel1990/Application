@@ -9,7 +9,7 @@
     require_once("partials/nav.php");    
 ?>
 
-<main class="container py-4 px-2">
+<main class="container">
 <!-- Formulario para agregar cursos -->
     <div class="row mt-5 justify-content-center">
         <div class="col-md-4 mb-4 text-center">
@@ -22,7 +22,7 @@
                 }
             ?>
             <form id="student_form" method="POST" action="<?php echo root;?>create" autocomplete="on">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <div class="card-body">
                         <h5 class="card-title mb-4">Agregar alumno</h5>
                         <div class="card-text">
@@ -90,8 +90,8 @@
                                 $html = "<tr>";
                                 $html .= "<td class='px-4'>" . ucfirst($row['username']) . "</td>";
                                 $html .= "<td class='text-center'>";
-                                $html .= "<a href='" . root . "delete?studentid=" . $row['id'] . "' " . "class='btn btn-danger' title='Eliminar'>Eliminar</a>";
-                                $html .= "<a href='" . root . "edit?studentid=" . $row['id'] . "' " . "class='btn btn-info mx-1' title='Editar'>Editar</a>";
+                                $html .= "<a href='" . root . "delete?userid=" . $row['id'] . "' " . "class='btn btn-danger' title='Eliminar'>Eliminar</a>";
+                                $html .= "<a href='" . root . "edit?userid=" . $row['id'] . "' " . "class='btn btn-info mx-1' title='Editar'>Editar</a>";
                                 $html .= "</td>";
                                 $html .= "</tr>";
                                 echo $html;
