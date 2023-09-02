@@ -33,7 +33,7 @@ if(isset($_GET["courseid"])) {
             <form class="col-auto" id="course_edit_form" method="POST" action="<?php echo root . "update?courseid=" . $courseId ;?>" autocomplete="off">
                 
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="course">Curso: </label>
+                    <label class="input-group-text is-required" for="course">Curso: </label>
                     <input class="form-control" value="<?php echo $row["name"];?>" type="text" id="course" placeholder="Nombre del curso" name="course" autofocus>
                 </div>
 
