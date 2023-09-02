@@ -16,7 +16,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $password = $_POST['password'];
 
 //Verificar que el usuario existe
-    $stmt = $conn -> prepare("SELECT * FROM users WHERE username = ?;"); 
+    $stmt = $conn -> prepare("SELECT id, username, password, firstname, lastname, email FROM users WHERE username = ?;"); 
     $stmt->bind_param("s", $username);
     $stmt->execute();
 
@@ -32,7 +32,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 session_set_cookie_params(0, "/" , $_SERVER["HTTP_HOST"], 0);
                 
 //Variables sesión
-                $_SESSION['userid'] = $row['userid'];
+                $_SESSION['userid'] = $row['id'];
                 $_SESSION['firstname'] = $row['firstname'];
                 $_SESSION['lastname'] = $row['lastname'];
                 $_SESSION['username'] = $row['username'];
