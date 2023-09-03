@@ -1,3 +1,3 @@
-<header class="py-2">
-    <h4 class="text-center">Cursos Gratis</h4>
+<header class="py-3">
+    <h4 class="text-center text-primary">Cursos Gratis</h4>
 </header>
