@@ -69,8 +69,8 @@ if(isset($_POST["course"])) {
 
 /***************************Creación de usuario**********************************/
 
-if(isset($_POST["user"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["password"]) && isset($_POST["email"]) && isset($_POST["role"])) {
-    if($_POST["user"] === "" || $_POST["firstname"] === "" || $_POST["lastname"] === "" || $_POST["password"] === "" || $_POST["email"] === ""|| $_POST["role"] === "") {
+if(isset($_POST["user"]) && isset($_POST["firstname"]) && isset($_POST["repeat_password"]) && isset($_POST["lastname"]) && isset($_POST["password"]) && isset($_POST["email"]) && isset($_POST["role"])) {
+    if($_POST["user"] === "" || $_POST["firstname"] === "" || $_POST["lastname"] === "" || $_POST["password"] === "" || $_POST["repeat_password"] === "" || $_POST["email"] === ""|| $_POST["role"] === "") {
         $_SESSION['message'] = "Complete todos los campos por favor";
         $_SESSION['message_alert'] = "danger";          
 
@@ -88,6 +88,8 @@ if(isset($_POST["user"]) && isset($_POST["firstname"]) && isset($_POST["lastname
 
         $password = $_POST["password"];
 
+        $repeat_password = $_POST["repeat_password"];
+
         $email = new Filter ($_POST["email"], FILTER_SANITIZE_EMAIL);
         $email = $email -> sanitization();;
 
@@ -104,39 +106,47 @@ if(isset($_POST["user"]) && isset($_POST["firstname"]) && isset($_POST["lastname
             header('Location: ' . root . 'alumnos');
             exit; 
         } else {
-
-            if (!preg_match($regExp, $username) || !preg_match($regExp, $firstname) || !preg_match($regExp, $lastname) || !preg_match($regExp, $email)) {
-                $_SESSION['message'] = "Formato no válido";
-                $_SESSION['message_alert'] = "danger";    
-                     
+            if($repeat_password !== $password) {
+                $_SESSION['message'] = "Contraseñas no coinciden";
+                $_SESSION['message_alert'] = "danger"; 
+    
                 header('Location: ' . root . 'alumnos');
-                exit;      
+                exit; 
             } else {
-                if (strlen($password) < 5 || strlen($password) > 50 || strlen($lastname) < 5 || strlen($lastname) > 40 || strlen($firstname) < 5 || strlen($firstname) > 30 || strlen($username) < 5 || strlen($username) > 30 || strlen($email) < 11 || strlen($email) > 70) {
-                    $_SESSION['message'] = "El nombre es muy largo";
-                    $_SESSION['message_alert'] = "danger";                      
-            
+
+                if (!preg_match($regExp, $username) || !preg_match($regExp, $firstname) || !preg_match($regExp, $lastname) || !preg_match($regExp, $email)) {
+                    $_SESSION['message'] = "Formato no válido";
+                    $_SESSION['message_alert'] = "danger";    
+                        
                     header('Location: ' . root . 'alumnos');
-                    exit;     
+                    exit;      
                 } else {
-                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-                    $stmt = $conn -> prepare("INSERT INTO users (username, firstname, lastname, password, email, role_id) VALUES (?, ?, ?, ?, ?, ?);"); 
-                    $stmt->bind_param("sssssi", $username, $firstname, $lastname, $hashed_password, $email, $roleid);
-
-                    if($stmt->execute()) {
-                        $_SESSION['message'] = "Usuario agregado correctamente";
-                        $_SESSION['message_alert'] = "success";        
-
+                    if (strlen($password) < 5 || strlen($password) > 50 || strlen($lastname) < 5 || strlen($lastname) > 40 || strlen($firstname) < 5 || strlen($firstname) > 30 || strlen($username) < 5 || strlen($username) > 30 || strlen($email) < 11 || strlen($email) > 70) {
+                        $_SESSION['message'] = "El nombre es muy largo";
+                        $_SESSION['message_alert'] = "danger";                      
+                
                         header('Location: ' . root . 'alumnos');
-                        exit;
+                        exit;     
                     } else {
-                        $_SESSION['message'] = "Error al agregar usuario";
-                        $_SESSION['message_alert'] = "danger";        
+                        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-                        header('Location: ' . root . 'alumnos');
-                        exit;
-                    }                   
+                        $stmt = $conn -> prepare("INSERT INTO users (username, firstname, lastname, password, email, role_id) VALUES (?, ?, ?, ?, ?, ?);"); 
+                        $stmt->bind_param("sssssi", $username, $firstname, $lastname, $hashed_password, $email, $roleid);
+
+                        if($stmt->execute()) {
+                            $_SESSION['message'] = "Usuario agregado correctamente";
+                            $_SESSION['message_alert'] = "success";        
+
+                            header('Location: ' . root . 'alumnos');
+                            exit;
+                        } else {
+                            $_SESSION['message'] = "Error al agregar usuario";
+                            $_SESSION['message_alert'] = "danger";        
+
+                            header('Location: ' . root . 'alumnos');
+                            exit;
+                        }   
+                    }                
                 }
             }
         }

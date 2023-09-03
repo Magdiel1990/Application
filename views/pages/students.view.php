@@ -47,6 +47,11 @@
                             </div>
 
                             <div class="input-group mb-3">
+                                <label class="input-group-text is-required" for="repeat_password">Contraseña: </label>
+                                <input class="form-control" type="text" id="repeat_password" placeholder="Nombre del alumno" name="repeat_password">
+                            </div>
+
+                            <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="email">Correo: </label>
                                 <input class="form-control" type="text" id="email" placeholder="Nombre del alumno" name="email">
                             </div>
