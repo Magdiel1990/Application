@@ -28,32 +28,32 @@
                         <div class="card-text">
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="user">Usuario: </label>
-                                <input class="form-control" type="text" id="user" placeholder="Nombre del alumno" name="user" autofocus>
+                                <input class="form-control" type="text" id="user" name="user" autofocus>
                             </div>
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="firstname">Nombres: </label>
-                                <input class="form-control" type="text" id="firstname" placeholder="Nombre del alumno" name="firstname">
+                                <input class="form-control" type="text" id="firstname" name="firstname">
                             </div>
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="lastname">Apellidos: </label>
-                                <input class="form-control" type="text" id="lastname" placeholder="Nombre del alumno" name="lastname">
+                                <input class="form-control" type="text" id="lastname" name="lastname">
                             </div>
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="password">Contraseña: </label>
-                                <input class="form-control" type="text" id="password" placeholder="Nombre del alumno" name="password">
+                                <input class="form-control" type="text" id="password" name="password">
                             </div>
 
                             <div class="input-group mb-3">
-                                <label class="input-group-text is-required" for="repeat_password">Contraseña: </label>
-                                <input class="form-control" type="text" id="repeat_password" placeholder="Nombre del alumno" name="repeat_password">
+                                <label class="input-group-text is-required" for="repeat_password">Repita contraseña: </label>
+                                <input class="form-control" type="text" id="repeat_password" name="repeat_password">
                             </div>
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="email">Correo: </label>
-                                <input class="form-control" type="text" id="email" placeholder="Nombre del alumno" name="email">
+                                <input class="form-control" type="text" id="email" name="email">
                             </div>
 
                             <div class="mb-3">
