@@ -16,7 +16,8 @@ if($param == "") {
     root. "salir" => "controllers/logout.controller.php",
     root. "alumnos" => "controllers/students.controller.php",
     root. "cursos" => "controllers/courses.controller.php",
-    root. "create" => "controllers/create.controller.php"
+    root. "create" => "controllers/create.controller.php",
+    root. "certificado" => "certificate.controller.php"
     ];
 //Si hay parámetros
 } else {
