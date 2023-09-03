@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <input class="btn btn-success"  type="submit" value="Agregar">
+                    <input class="btn btn-success"  type="submit" value="Crear">
                 </div>
 
             </form>
