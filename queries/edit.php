@@ -136,4 +136,10 @@ if(isset($_GET["userid"])) {
 $conn -> close ();
 
 require_once ("partials/footer.php");
+
+//Si no hay variables post o get, reenvía al inicio
+if(empty($_POST) || empty($_GET)) {
+    header('Location: ' . root);
+    exit;  
+}
 ?>

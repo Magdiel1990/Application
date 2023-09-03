@@ -90,4 +90,10 @@ if(isset($_GET["userid"]) && isset($_POST["user"]) && isset($_POST["firstname"])
 }
 //Cerrar la conexión a la base de datos
 $conn -> close ();
+
+//Si no hay variables post o get, reenvía al inicio
+if(empty($_POST) || empty($_GET)) {
+    header('Location: ' . root);
+    exit;  
+}
 ?>
