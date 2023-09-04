@@ -183,23 +183,21 @@ if(isset($_GET["assign"])) {
     } else {
 ?>
 <main class="container p-4 mb-2">
-    <section class="row justify-content-center">
-        <h2 class="col-auto mb-3">No hay cursos disponibles</h2>
+    <div class="mb-5"></div>
+    <section class="row justify-content-center">        
+        <h3 class="col-auto mb-3 text-success">No hay cursos disponibles</h3>
+        <div class="text-center">
+            <a href="<?php echo root . "alumnos";?>" class="btn btn-secondary">Regresar</a>
+        </div>
     </section>
 </main>
 <?php        
     }
 }
 
-
 //Cerrar la conexión a la base de datos
 $conn -> close ();
 
 require_once ("partials/footer.php");
 
-//Si no hay variables post o get, reenvía al inicio
-if(empty($_POST) || empty($_GET)) {
-    header('Location: ' . root);
-    exit;  
-}
 ?>
