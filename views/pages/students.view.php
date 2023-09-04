@@ -96,7 +96,7 @@
                                 $html .= "<div class='btn-group'>";
                                 $html .= "<a href='" . root . "delete?userid=" . $row['id'] . "' " . "class='btn btn-danger' title='Eliminar'>Eliminar</a>";
                                 $html .= "<a href='" . root . "edit?userid=" . $row['id'] . "' " . "class='btn btn-info' title='Editar'>Editar</a>";
-                                $html .= "<a href='" . root . "edit?assign=" . $row['id'] . "' " . "class='btn btn-warning' title='Editar'>Seleccionar</a>";
+                                $html .= "<a href='" . root . "edit?assign=" . $row['id'] . "' " . "class='btn btn-warning' title='Editar'>Agregar</a>";
                                 $html .= "</div>";
                                 $html .= "</td>";
                                 $html .= "</tr>";
