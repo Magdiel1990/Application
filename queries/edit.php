@@ -131,6 +131,69 @@ if(isset($_GET["userid"])) {
         require "views/error/404.php";
     }
 }
+ 
+/*************************Asignar curso******************************** */
+
+if(isset($_GET["assign"])) {
+    $userId = $_GET["assign"];
+
+    $result = $conn -> query("SELECT name FROM courses;");
+    if($result -> num_rows > 0) {
+?>
+<main class="container">
+<!-- Formulario para agregar cursos -->
+    <div class="row my-5 justify-content-center">
+        <div class="col-md-4 mb-4 text-center">
+            <?php
+                // Mensaje 
+                if(isset($_SESSION['message'])) {
+                    echo "<span class='text-" . $_SESSION['message_alert'] . "'>" . $_SESSION['message'] ."</span>";
+                    //Eliminar mensaje
+                    unset($_SESSION['message_alert'], $_SESSION['message']);
+                }
+            ?>
+            <form id="course_assign_form" method="POST" action="<?php echo root . "create?userid=". $userId ;?>"  autocomplete="off">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Cursos</h5>
+                        <div class="card-text">
+                            <div>
+                                <?php 
+                                    $html = "";
+                                    while($row = $result -> fetch_assoc()) {
+                                        $html .= '<div class="form-check">';
+                                        $html .= '<input class="form-check-input" type="checkbox" value="' . $row ['name'] . '" id="' . $row ['name'] .'">';
+                                        $html .= '<label class="form-check-label" for="' . $row ['name'] .'">';
+                                        $html .=  $row ['name'];
+                                        $html .= '</label>';
+                                        $html .= '</div>';
+                                    }
+                                    echo $html;
+                                ?>
+                            </div>
+
+                            <div class="my-3">
+                                <input class="btn btn-primary"  type="submit" value="Agregar">
+                            </div>                                        
+                        </div>
+                    </div>
+                </div>            
+            </form>
+        </div>
+    </div>
+</main>
+<?php
+    } else {
+?>
+<main class="container p-4 mb-2">
+    <section class="row justify-content-center">
+        <h2 class="col-auto mb-3">No hay cursos disponibles</h2>
+    </section>
+</main>
+<?php        
+    }
+}
+
 
 //Cerrar la conexión a la base de datos
 $conn -> close ();

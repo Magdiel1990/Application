@@ -93,8 +93,11 @@
                                 $html = "<tr>";
                                 $html .= "<td class='px-4'>" . ucfirst($row['username']) . "</td>";
                                 $html .= "<td class='text-center'>";
+                                $html .= "<div class='btn-group'>";
                                 $html .= "<a href='" . root . "delete?userid=" . $row['id'] . "' " . "class='btn btn-danger' title='Eliminar'>Eliminar</a>";
-                                $html .= "<a href='" . root . "edit?userid=" . $row['id'] . "' " . "class='btn btn-info mx-1' title='Editar'>Editar</a>";
+                                $html .= "<a href='" . root . "edit?userid=" . $row['id'] . "' " . "class='btn btn-info' title='Editar'>Editar</a>";
+                                $html .= "<a href='" . root . "edit?assign=" . $row['id'] . "' " . "class='btn btn-warning' title='Editar'>Seleccionar</a>";
+                                $html .= "</div>";
                                 $html .= "</td>";
                                 $html .= "</tr>";
                                 echo $html;
