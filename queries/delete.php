@@ -59,6 +59,45 @@ if(isset($_GET["userid"])) {
     }
 }
 
+/******************************Borrar cursos de los estudiante ************************* */
+
+if(isset($_GET["cursoid"])) {
+    $courseId = $_GET["cursoid"];
+//Verificar que el curso existe
+    $result = $conn -> query ("SELECT id FROM courses_details WHERE id = '$courseId';");
+
+    if($result -> num_rows > 0) {
+        $result = $conn -> query ("DELETE FROM courses_details WHERE id = '$courseId';");
+
+        if($result) {
+            $_SESSION['message'] = "Curso eliminado";
+            $_SESSION['message_alert'] = "success";        
+
+            header('Location: ' . root . 'alumnos');
+            exit;
+        } else {
+            $_SESSION['message'] = "Error al eliminar curso";
+            $_SESSION['message_alert'] = "danger";        
+
+            header('Location: ' . root . 'alumnos');
+            exit;
+        }
+//Si no existe el curso envía a página de error
+    } else {
+        http_response_code(404);
+
+        require_once ("partials/head.php");
+
+        require_once ("partials/header.php");    
+    
+        require_once ("partials/nav.php");  
+    
+        require_once ("views/error/404.php");
+
+        require_once ("partials/footer.php");
+    }
+}
+
 //Cerrar la conexión a la base de datos
 $conn -> close ();
 

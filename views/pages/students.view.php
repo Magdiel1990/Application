@@ -104,7 +104,7 @@
                                 $resultCourses = $conn -> query ("SELECT id, name FROM courses_details WHERE userid = '" . $row['id'] . "';");
                                 
                                 while ($rowCourses = $resultCourses -> fetch_assoc()) {
-                                    $html .= "<tr class='bg-light'><td colspan = '2'><a href='" . root . "delete?courseid=" . $rowCourses['id'] . "' style='text-decoration: none;'>" . $rowCourses['name'] . "</a></td></tr>";
+                                    $html .= "<tr class='bg-light'><td colspan = '2'><a href='" . root . "delete?cursoid=" . $rowCourses['id'] . "' style='text-decoration: none;'>" . $rowCourses['name'] . "</a></td></tr>";
                                 }
                                 echo $html;
                             }

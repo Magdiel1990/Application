@@ -162,6 +162,7 @@ if(isset($_POST["courses"]) && isset($_GET["userid"])) {
     $result = $conn -> query ("SELECT id FROM users WHERE id = '$userId';");
 
     if($result -> num_rows > 0) {
+//Verificar si se ha seleccionado un curso
         if(count($courses) > 0) {
 //Agregar los cursos a ese usuario
             $sql = "";
