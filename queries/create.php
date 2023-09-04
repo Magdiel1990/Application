@@ -153,6 +153,59 @@ if(isset($_POST["user"]) && isset($_POST["firstname"]) && isset($_POST["repeat_p
     }
 }
 
+/***************************************Agregar cursos a usuarios ****************************** */
+
+if(isset($_POST["courses"]) && isset($_GET["userid"])) {
+    $courses = $_POST["courses"];
+    $userId = $_GET["userid"];
+//Verificar que el usuario existe
+    $result = $conn -> query ("SELECT id FROM users WHERE id = '$userId';");
+
+    if($result -> num_rows > 0) {
+        if(count($courses) > 0) {
+//Agregar los cursos a ese usuario
+            $sql = "";
+            for($i = 0; $i < count($courses); $i++) {
+                $sql .= "INSERT INTO courses_details (name, userid) VALUES ('" . $courses[$i] . "', '" . $userId . "');";
+            }
+
+            if($conn -> multi_query ($sql)) {
+                $_SESSION['message'] = "Cursos agregados";
+                $_SESSION['message_alert'] = "success";        
+    
+                header('Location: ' . root . 'alumnos');
+                exit;
+            } else {
+                $_SESSION['message'] = "Error al agregar curso";
+                $_SESSION['message_alert'] = "danger";        
+    
+                header('Location: ' . root . 'alumnos');
+                exit;
+            }
+
+        } else {
+            $_SESSION['message'] = "Seleccione un curso";
+            $_SESSION['message_alert'] = "danger";        
+
+            header('Location: ' . root . 'edit?assign=' . $userId);
+            exit;
+        }
+//Si el usuario no existe enviar a página de error
+    } else {
+        http_response_code(404);
+
+        require_once ("partials/head.php");
+
+        require_once ("partials/header.php");    
+    
+        require_once ("partials/nav.php");  
+    
+        require_once ("views/error/404.php");
+
+        require_once ("partials/footer.php");
+    }
+
+}
 //Cerrar la conexión a la base de datos
 $conn -> close ();
 
