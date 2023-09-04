@@ -43,17 +43,17 @@
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="password">Contraseña: </label>
-                                <input class="form-control" type="text" id="password" name="password">
+                                <input class="form-control" type="password" id="password" name="password">
                             </div>
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="repeat_password">Repita contraseña: </label>
-                                <input class="form-control" type="text" id="repeat_password" name="repeat_password">
+                                <input class="form-control" type="password" id="repeat_password" name="repeat_password">
                             </div>
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="email">Correo: </label>
-                                <input class="form-control" type="text" id="email" name="email">
+                                <input class="form-control" type="email" id="email" name="email">
                             </div>
 
                             <div class="mb-3">
@@ -123,7 +123,23 @@
         </div>
     </div>
 </main>
+<!--
+<script>
+    //Validación de formulario con Javascript
+    student_validation();
 
+    function student_validation() {
+        let username = document.getElementById("user").value;
+        let firstname = document.getElementById("firstname").value;
+        let lastname = document.getElementById("lastname").value;
+        let password = document.getElementById("password").value;
+        let repeat_password = document.getElementById("repeat_password").value;
+        let email = document.getElementById("email").value;
+        let role = document.getElementById("role").value;
+        
+    }
+</script>
+-->
 <?php
     //Cerrar la conexión a la base de datos
     $conn -> close ();
