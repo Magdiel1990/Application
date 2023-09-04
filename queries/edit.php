@@ -137,13 +137,13 @@ if(isset($_GET["userid"])) {
 if(isset($_GET["assign"])) {
     $userId = $_GET["assign"];
 
-    $result = $conn -> query("SELECT name FROM courses;");
+    $result = $conn -> query("SELECT name FROM courses WHERE name NOT IN (SELECT name FROM courses_details WHERE userid = '$userId');");
     if($result -> num_rows > 0) {
 ?>
 <main class="container">
 <!-- Formulario para agregar cursos -->
     <div class="row my-5 justify-content-center">
-        <div class="col-md-4 mb-4 text-center">
+        <div class="col-md-4 mb-4">
             <?php
                 // Mensaje 
                 if(isset($_SESSION['message'])) {
@@ -155,14 +155,13 @@ if(isset($_GET["assign"])) {
             <form id="course_assign_form" method="POST" action="<?php echo root . "create?userid=". $userId ;?>"  autocomplete="off">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">Cursos</h5>
+                        <h5 class="card-title mb-4 text-center">Cursos</h5>
                         <div class="card-text">
-                            <div>
                                 <?php 
                                     $html = "";
                                     while($row = $result -> fetch_assoc()) {
                                         $html .= '<div class="form-check">';
-                                        $html .= '<input class="form-check-input" type="checkbox" value="' . $row ['name'] . '" id="' . $row ['name'] .'">';
+                                        $html .= '<input class="form-check-input" name="courses[]" type="checkbox" value="' . $row ['name'] . '" id="' . $row ['name'] .'">';
                                         $html .= '<label class="form-check-label" for="' . $row ['name'] .'">';
                                         $html .=  $row ['name'];
                                         $html .= '</label>';
@@ -170,9 +169,7 @@ if(isset($_GET["assign"])) {
                                     }
                                     echo $html;
                                 ?>
-                            </div>
-
-                            <div class="my-3">
+                            <div class="mt-4 text-center">
                                 <input class="btn btn-primary"  type="submit" value="Agregar">
                             </div>                                        
                         </div>
