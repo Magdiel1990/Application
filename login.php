@@ -85,8 +85,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 <div class="card mb-3">
                     <div class="row p-4 g-0 d-flex justify-content-center align-items-center">
                         <div class="col-lg-6 col-md-8 d-lg-flex">
-                            <img src="https://hoy.com.do/wp-content/uploads/2020/03/10-cursos-online-gratuitos-aprender-ingles-810x455.jpg" alt="Trendy Pants and Shoes"
-                            class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+                        <img src="https://infotepvirtual.com/images/nicepage-images/logo-infotep-slide.png" alt="Logo de Infotep Virtual"/>
                         </div>
                         <div class="col-lg-6 col-md-8">
                             <div class="card-body p-5">
