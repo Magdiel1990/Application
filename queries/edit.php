@@ -8,9 +8,7 @@ require_once ("classes/role.class.php");
 $dbConection = new DBConnection ("localhost:3306", "root", "123456", "courses");
 $conn = $dbConection -> dbConnection ();
 
-require_once("partials/head.php");
-
-require_once("partials/header.php");    
+require_once("partials/head.php");  
 
 require_once("partials/nav.php");   
 
