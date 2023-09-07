@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <input class="btn btn-success"  type="submit" value="Crear">
+                    <input class="btn btn-success" title="Crear curso" type="submit" value="Crear">
                 </div>
 
                 <div class="text-danger" id="message"></div>

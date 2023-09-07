@@ -1,10 +1,4 @@
 <?php
-//Nombre de la sesión
-session_name("Login");
-
-//Inicializar sesión
-session_start();
-
 //Conexión a la base de datos
 require_once ("classes/db_connection.class.php");
 
@@ -47,7 +41,7 @@ if(isset($_GET["courseid"])) {
                 </div>
 
                 <div class="text-center mb-3">
-                    <input class="btn btn-secondary"  type="submit" value="Editar">
+                    <input class="btn btn-secondary" title="Guardar cambios" type="submit" value="Guardar cambios">
                 </div>
 
             </form>
@@ -119,7 +113,7 @@ if(isset($_GET["userid"])) {
                             </div>
 
                             <div class="mb-3">
-                                <input class="btn btn-secondary"  type="submit" value="Editar">
+                                <input class="btn btn-secondary" title="Guardar cambios" type="submit" value="Guardar cambios">
                             </div>                                        
                         </div>
                     </div>

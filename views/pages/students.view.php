@@ -19,7 +19,7 @@
                     unset($_SESSION['message_alert'], $_SESSION['message']);
                 }
             ?>
-            <form id="student_form" method="POST" action="<?php echo root;?>create" autocomplete="on">
+            <form class="mt-2" id="student_form" method="POST" action="<?php echo root;?>create" autocomplete="on">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title mb-4">Agregar alumno</h5>
@@ -102,7 +102,7 @@
                                 $html .= "<div class='btn-group'>";
                                 $html .= "<a $visibility href='" . root . "delete?userid=" . $row['id'] . "' " . "class='btn btn-danger delBtn' title='Eliminar'>Eliminar</a>";
                                 $html .= "<a href='" . root . "edit?userid=" . $row['id'] . "' " . "class='btn btn-info' title='Editar'>Editar</a>";
-                                $html .= "<a href='" . root . "edit?assign=" . $row['id'] . "' " . "class='btn btn-warning' title='Editar'>Agregar</a>";
+                                $html .= "<a href='" . root . "edit?assign=" . $row['id'] . "' " . "class='btn btn-warning' title='Agregar curso'>Agregar</a>";
                                 $html .= "</div>";
                                 $html .= "</td>";
                                 $html .= "</tr>";
