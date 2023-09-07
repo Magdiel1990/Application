@@ -100,7 +100,7 @@
                                 $html .= "<td class='px-4'>" . ucfirst($row['username']) . "</td>";
                                 $html .= "<td class='text-center'>";
                                 $html .= "<div class='btn-group'>";
-                                $html .= "<a $visibility href='" . root . "delete?userid=" . $row['id'] . "' " . "class='btn btn-danger' title='Eliminar'>Eliminar</a>";
+                                $html .= "<a $visibility href='" . root . "delete?userid=" . $row['id'] . "' " . "class='btn btn-danger delBtn' title='Eliminar'>Eliminar</a>";
                                 $html .= "<a href='" . root . "edit?userid=" . $row['id'] . "' " . "class='btn btn-info' title='Editar'>Editar</a>";
                                 $html .= "<a href='" . root . "edit?assign=" . $row['id'] . "' " . "class='btn btn-warning' title='Editar'>Agregar</a>";
                                 $html .= "</div>";
@@ -133,6 +133,9 @@
 <script>
     //Validación de formulario con Javascript
     student_validation();
+
+    //Mensaje de confirmación para eliminar
+    delete_message ();
 
     function student_validation() {
         //Elemento de formulario
@@ -220,6 +223,23 @@
         return true;
 
         });
+    }
+
+    //Mensaje de confirmación de borrado del curso
+    function delete_message () {
+        let deletionBtn = document.getElementsByClassName("delBtn");
+
+        for(let i = 0; i < deletionBtn.length; i++) {
+            deletionBtn[i].addEventListener("click", function(event){    
+                if (confirm("Desea eliminar este usuario?")) {
+                    return true;
+                } else {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+        }
+        
     }
 </script>
 

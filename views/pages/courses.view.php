@@ -75,7 +75,7 @@
     course_validation();
 
     //Confirmación de borrado de mensaje
-   // delete_message ();
+    delete_message ();
 
     function course_validation() {
         //Elemento de formulario
@@ -117,20 +117,20 @@
         });
     }
 
-    /*
+
     //Mensaje de confirmación de borrado del curso
     function delete_message () {
-    let deletionBtn = document.getElementById("delBtn");
+        let deletionBtn = document.getElementById("delBtn");
 
-    deletionBtn.addEventListener("click", function(event){
-        if (confirm("Desea eliminar este curso?")) {
-            return true;
-        } else {
-            event.preventDefault();
-            return false;
-        }
-    });
-    }*/
+        deletionBtn.addEventListener("click", function(event){
+            if (confirm("Desea eliminar este curso?")) {
+                return true;
+            } else {
+                event.preventDefault();
+                return false;
+            }
+        });
+    }
 
 </script>
 <?php
