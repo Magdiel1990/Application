@@ -62,7 +62,7 @@ if(isset($_GET["userid"])) {
     $result = $conn -> query ("SELECT u.username, u.firstname, u.lastname, u.password, u.email, r.role FROM users u JOIN roles r ON r.id = u.role_id WHERE u.id = '$userId';");
 
     if($result -> num_rows > 0) {
-    $row = $result -> fetch_assoc();    
+    $row = $result -> fetch_assoc();
 ?>  
 <main class="container">
 <!-- Formulario para agregar cursos -->

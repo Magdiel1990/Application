@@ -84,15 +84,22 @@
                 </thead>
                 <tbody>                
                     <?php
-                        $result = $conn -> query("SELECT id, username FROM users;");
+                        $result = $conn -> query("SELECT u.id, u.username, r.role FROM users u JOIN roles r ON u.role_id = r.id;");
 
                         if($result -> num_rows > 0){
                             while($row = $result -> fetch_assoc()){
+                                //Administradores no pueden eliminarse                    
+                                if($row["role"] == "Admin") {
+                                    $visibility = "style = 'display: none;'";
+                                } else {
+                                    $visibility = "";
+                                }
+
                                 $html = "<tr>";
                                 $html .= "<td class='px-4'>" . ucfirst($row['username']) . "</td>";
                                 $html .= "<td class='text-center'>";
                                 $html .= "<div class='btn-group'>";
-                                $html .= "<a href='" . root . "delete?userid=" . $row['id'] . "' " . "class='btn btn-danger' title='Eliminar'>Eliminar</a>";
+                                $html .= "<a $visibility href='" . root . "delete?userid=" . $row['id'] . "' " . "class='btn btn-danger' title='Eliminar'>Eliminar</a>";
                                 $html .= "<a href='" . root . "edit?userid=" . $row['id'] . "' " . "class='btn btn-info' title='Editar'>Editar</a>";
                                 $html .= "<a href='" . root . "edit?assign=" . $row['id'] . "' " . "class='btn btn-warning' title='Editar'>Agregar</a>";
                                 $html .= "</div>";

@@ -68,6 +68,8 @@ if(isset($_GET["userid"]) && isset($_POST["user"]) && isset($_POST["firstname"])
                 header('Location: ' . root . 'edit?userid=' . $_GET["userid"]);
                 exit;     
             } else {
+                $result = $conn -> query ("SELECT r.role FROM users u JOIN roles r ON r.id = u.role_id WHERE r.role = 'Admin';");
+
                 $stmt = $conn -> prepare("UPDATE users SET username = ?, firstname = ?, lastname = ?, email = ?, role_id = ? WHERE id = '" . $_GET["userid"] . "';"); 
                 $stmt->bind_param("ssssi", $username, $firstname, $lastname, $email, $roleid);
 
