@@ -135,8 +135,10 @@
     student_validation();
 
     function student_validation() {
+        //Elemento de formulario
         let form = document.getElementById("student_form");
-
+        
+        //Agregando evento al formulario
         form.addEventListener("submit", function(event){ 
         let username_element = document.getElementById("user");
         let username = username_element.value;
@@ -150,21 +152,22 @@
         let repeat_password = repeat_password_element.value;
         let email = document.getElementById("email").value;
         let message = document.getElementById("message"); 
+        //Expresión regular
         let regExp = /[a-zA-Z,;:\t\h]+|(^$)/;
-
+        //Validación de que las variables no vengan vacías
         if(username == "" || firstname == "" || lastname == "" || password == "" || repeat_password == "" || email == "") {
             event.preventDefault();
             message.innerHTML = "¡Completar los campos requeridos!";             
             return false;
         }
-
+        //Coincidencia de las contraseñas
         if(password !== repeat_password) {
             repeat_password_element.focus();
             event.preventDefault();
             message.innerHTML = "¡Las contraseñas deben coincidir!";             
             return false;
         }
-
+        //Validación de la cantidad de caracteres
         if(firstname.length < 5 || firstname.length > 30){
             firstname_element.focus();
             event.preventDefault();
@@ -192,7 +195,7 @@
             message.innerHTML = "¡La contraseña debe tener entre 5 a 50 caracteres!";                 
             return false;
         } 
-        
+        //Validación de la expresión regulars
         if(!firstname.match(regExp)) {
             firstname_element.focus();
             event.preventDefault();
