@@ -138,10 +138,14 @@
         let form = document.getElementById("student_form");
 
         form.addEventListener("submit", function(event){ 
-        let username = document.getElementById("user").value;
-        let firstname = document.getElementById("firstname").value;
-        let lastname = document.getElementById("lastname").value;
-        let password = document.getElementById("password").value;
+        let username_element = document.getElementById("user");
+        let username = username_element.value;
+        let firstname_element = document.getElementById("firstname");
+        let firstname = firstname_element.value;
+        let lastname_element = document.getElementById("lastname");
+        let lastname = lastname_element.value;
+        let password_element = document.getElementById("password");
+        let password = password_element.value;
         let repeat_password_element = document.getElementById("repeat_password");
         let repeat_password = repeat_password_element.value;
         let email = document.getElementById("email").value;
@@ -160,6 +164,56 @@
             message.innerHTML = "¡Las contraseñas deben coincidir!";             
             return false;
         }
+
+        if(firstname.length < 5 || firstname.length > 30){
+            firstname_element.focus();
+            event.preventDefault();
+            message.innerHTML = "¡El nombre debe tener de 5 a 30 caracteres!";                 
+            return false;
+        } 
+
+        if(lastname.length < 5 || lastname.length > 40){
+            lastname_element.focus();
+            event.preventDefault();
+            message.innerHTML = "¡El apellido debe tener de 5 a 40 caracteres!";                 
+            return false;
+        } 
+
+        if(username.length < 5 || username.length > 30){
+            username_element.focus();
+            event.preventDefault();
+            message.innerHTML = "¡El nombre de usuario debe tener de 5 a 30 caracteres!";                 
+            return false;
+        } 
+
+        if(password.length < 5 || password.length > 50){
+            password_element.focus();
+            event.preventDefault();
+            message.innerHTML = "¡La contraseña debe tener entre 5 a 50 caracteres!";                 
+            return false;
+        } 
+        
+        if(!firstname.match(regExp)) {
+            firstname_element.focus();
+            event.preventDefault();
+            message.innerHTML = "¡Nombre incorrecto!";                 
+            return false;
+        }
+
+        if(!lastname.match(regExp)) {
+            lastname_element.focus();
+            event.preventDefault();
+            message.innerHTML = "¡Apellido incorrecto!";                 
+            return false;
+        }
+        
+        if(!username.match(regExp)) {
+            username_element.focus();
+            event.preventDefault();
+            message.innerHTML = "¡Nombre de usuario incorrecto!";                 
+            return false;
+        }  
+
         return true;
 
         });
