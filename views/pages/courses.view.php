@@ -27,6 +27,8 @@
                     <input class="btn btn-success"  type="submit" value="Crear">
                 </div>
 
+                <div class="text-danger" id="message"></div>
+
             </form>
         </div>
 <!-- Lista de cursos -->
@@ -68,7 +70,50 @@
         </div>
     </div>
 </main>
+<script>
+    //Validación de formulario con Javascript
+    course_validation();
 
+    function course_validation() {
+        //Elemento de formulario
+        let form = document.getElementById("course_form");
+        
+        //Agregando evento al formulario
+        form.addEventListener("submit", function(event){ 
+        let course_element = document.getElementById("course");
+        let course = course_element.value;
+        let message = document.getElementById("message"); 
+        //Expresión regular
+        let regExp = /[a-zA-Z,;:\t\h]+|(^$)/;
+        //Validación de que las variables no vengan vacías
+        if(course == "") {
+            course_element.focus();
+            event.preventDefault();
+            message.innerHTML = "¡Completar el campo requerido!";             
+            return false;
+        }
+
+        //Validación de la cantidad de caracteres
+        if(course.length < 2 || course.length > 75){
+            course_element.focus();
+            event.preventDefault();
+            message.innerHTML = "¡El nombre de curso debe tener de 2 a 75 caracteres!";                 
+            return false;
+        } 
+
+        //Validación de la expresión regulars
+        if(!course.match(regExp)) {
+            course_element.focus();
+            event.preventDefault();
+            message.innerHTML = "¡Nombre de curso incorrecto!";                 
+            return false;
+        }
+
+        return true;
+
+        });
+    }
+</script>
 <?php
     //Cerrar la conexión a la base de datos
     $conn -> close ();
