@@ -11,15 +11,24 @@ require_once ("classes/db_connection.class.php");
 $dbConection = new DBConnection ("localhost:3306", "root", "123456", "courses");
 $conn = $dbConection -> dbConnection ();
 
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Error en conexión: " . $conn->connect_error);
+}
+
 /****************************COURSE DELETION **************************/
 
 if(isset($_GET["courseid"])) {
     $courseId = $_GET["courseid"];
-
 //Verificar que ese id existe
-    if($conn -> query ("SELECT id FROM courses WHERE id = '$courseId';")) {
-        $result = $conn -> query ("DELETE FROM courses WHERE id = '$courseId';");
-        if($result) {
+    $result = $conn -> query ("SELECT id FROM courses WHERE id = $courseId;");
+    
+    $num_rows = $result -> num_rows;
+    
+    if($num_rows >= 1) {
+        $resultado = $conn -> query ("DELETE FROM courses WHERE id = $courseId;");
+
+        if($resultado) {
             $_SESSION['message'] = "Curso eliminado";
             $_SESSION['message_alert'] = "success";   
         
@@ -106,10 +115,4 @@ if(isset($_GET["cursoid"])) {
 
 //Cerrar la conexión a la base de datos
 $conn -> close ();
-
-//Si no hay variables post o get, reenvía al inicio
-if(empty($_POST) || empty($_GET)) {
-    header('Location: ' . root);
-    exit;  
-}
 ?>

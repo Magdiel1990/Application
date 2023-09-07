@@ -10,6 +10,12 @@ require_once ("classes/db_connection.class.php");
 $dbConection = new DBConnection("localhost:3306", "root", "123456", "courses");
 $conn = $dbConection -> dbConnection ();
 
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Error en conexión: " . $conn->connect_error);
+}
+
+
 //Verificar el usuario y la contraseña
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];

@@ -18,10 +18,6 @@ class DBConnection {
 
         $conn = new mysqli($this -> hostname, $this -> username,  $this -> password, $this -> database);
             
-    // Verificar conexión
-        if ($conn->connect_error) {
-            die("Error en conexión: " . $conn->connect_error);
-        }
         return $conn;        
     }
 }
