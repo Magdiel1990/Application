@@ -26,32 +26,32 @@
                         <div class="card-text">
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="user">Usuario: </label>
-                                <input class="form-control" type="text" id="user" name="user" autofocus>
+                                <input class="form-control" type="text" id="user" name="user" autofocus required  minlength="5" maxlength="30">
                             </div>
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="firstname">Nombres: </label>
-                                <input class="form-control" type="text" id="firstname" name="firstname">
+                                <input class="form-control" type="text" id="firstname" name="firstname" required minlength="5" maxlength="30">
                             </div>
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="lastname">Apellidos: </label>
-                                <input class="form-control" type="text" id="lastname" name="lastname">
+                                <input class="form-control" type="text" id="lastname" name="lastname" required minlength="5" maxlength="40">
                             </div>
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="password">Contraseña: </label>
-                                <input class="form-control" type="password" id="password" name="password">
+                                <input class="form-control" type="password" id="password" name="password" required minlength="5" maxlength="50">
                             </div>
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="repeat_password">Repita contraseña: </label>
-                                <input class="form-control" type="password" id="repeat_password" name="repeat_password">
+                                <input class="form-control" type="password" id="repeat_password" name="repeat_password" required minlength="5" maxlength="50">
                             </div>
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="email">Correo: </label>
-                                <input class="form-control" type="email" id="email" name="email">
+                                <input class="form-control" type="email" id="email" name="email" required minlength="11" maxlength="70">
                             </div>
 
                             <div class="mb-3">
