@@ -12,8 +12,22 @@
         <a class="nav-link" href="<?php echo root . "alumnos";?>">Alumnos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo root . "salir";?>">Salir</a>
+        <a id="exit" class="nav-link" href="<?php echo root . "salir";?>">Salir</a>
       </li>
     </ul>
   </div>
 </nav>
+
+<script>
+  //Mensaje de confirmación de salida de la aplicación
+  let exit = document.getElementById("exit");
+
+  exit.addEventListener("click", function(event){
+    if (confirm("Desea salir de la aplicación?")) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  });
+</script>
