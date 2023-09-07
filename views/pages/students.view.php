@@ -69,6 +69,7 @@
                                 <input class="btn btn-success"  type="submit" value="Agregar">
                             </div>                                        
                         </div>
+                        <div class="text-danger" id="message"></div>
                     </div>
                 </div>            
             </form>
@@ -128,23 +129,43 @@
         </div>
     </div>
 </main>
-<!--
+
 <script>
     //Validación de formulario con Javascript
     student_validation();
 
     function student_validation() {
+        let form = document.getElementById("student_form");
+
+        form.addEventListener("submit", function(event){ 
         let username = document.getElementById("user").value;
         let firstname = document.getElementById("firstname").value;
         let lastname = document.getElementById("lastname").value;
         let password = document.getElementById("password").value;
-        let repeat_password = document.getElementById("repeat_password").value;
+        let repeat_password_element = document.getElementById("repeat_password");
+        let repeat_password = repeat_password_element.value;
         let email = document.getElementById("email").value;
-        let role = document.getElementById("role").value;
-        
+        let message = document.getElementById("message"); 
+        let regExp = /[a-zA-Z,;:\t\h]+|(^$)/;
+
+        if(username == "" || firstname == "" || lastname == "" || password == "" || repeat_password == "" || email == "") {
+            event.preventDefault();
+            message.innerHTML = "¡Completar los campos requeridos!";             
+            return false;
+        }
+
+        if(password !== repeat_password) {
+            repeat_password_element.focus();
+            event.preventDefault();
+            message.innerHTML = "¡Las contraseñas deben coincidir!";             
+            return false;
+        }
+        return true;
+
+        });
     }
 </script>
--->
+
 <?php
     //Cerrar la conexión a la base de datos
     $conn -> close ();

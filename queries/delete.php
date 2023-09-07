@@ -1,4 +1,10 @@
 <?php
+//Nombre de la sesión
+session_name("Login");
+
+//Inicializar sesión
+session_start();
+
 //Conexión a la base de datos
 require_once ("classes/db_connection.class.php");
 
