@@ -20,7 +20,7 @@
                 
                 <div class="input-group mb-3">
                     <label class="input-group-text is-required" for="course">Curso: </label>
-                    <input class="form-control" type="text" id="course" placeholder="Nombre del curso" name="course" autofocus>
+                    <input class="form-control" type="text" id="course" placeholder="Nombre del curso" name="course" autofocus required minlength="2" maxlength="75">
                 </div>
 
                 <div class="mb-3">
