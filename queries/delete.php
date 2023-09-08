@@ -75,7 +75,7 @@ if(isset($_GET["userid"])) {
                 header('Location: ' . root . 'alumnos');
             }
         } else {
-            $_SESSION['message'] = "Unico usuario Admin ni puede ser eliminado";
+            $_SESSION['message'] = "Este usuario no puede ser eliminado";
             $_SESSION['message_alert'] = "danger";        
     
             header('Location: ' . root . 'alumnos');

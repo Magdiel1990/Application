@@ -21,6 +21,10 @@
 /*Main*/
 main {
     min-height: calc(100vh - 10rem);
+    /*background-image: url("https://infotepvirtual.com/images/nicepage-images/logo-infotep-slide.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;*/
 }
 
 /*Footer*/

@@ -26,7 +26,9 @@ class AdminUserCalc {
         $totalCount = $this -> totalUsers();
         $adminCount = $this -> adminUsers();
 
-        if($totalCount == 1 && $adminCount == 1) {
+        if($totalCount > 0 && $adminCount == 0) {
+            return false;
+        } else if ($totalCount == 1 && $adminCount == 1) {
             return false;
         } else {
             return true;
