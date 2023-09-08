@@ -8,8 +8,7 @@ class RoleList {
     }
 
     public function roleOptions() {
-        $dbConection = new DBConnection ("localhost:3306", "root", "123456", "courses");
-        $conn = $dbConection -> dbConnection ();
+        $conn = DBConnection::dbConnection();
 
         $result = $conn -> query ("SELECT * FROM " . $this -> table . ";");
 

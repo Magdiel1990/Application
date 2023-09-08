@@ -1,24 +1,23 @@
 <?php
 //Clase de conección a base de datos
 class DBConnection {
-    private $hostname;
-    private $username;
-    private $password; 
-    private $database;
+    //Información de la base de datos    
+    static $hostname = "localhost:3306";
+    static $username = "root";
+    static $password = "123456";
+    static $database = "courses";
 
-    function __construct ($hostname, $username, $password, $database) { 
-        $this -> hostname = $hostname;
-        $this -> username = $username;
-        $this -> password = $password;
-        $this -> database = $database;
-    } 
-    
-    //Conexión a la base de datos
-    public function dbConnection() {
-
-        $conn = new mysqli($this -> hostname, $this -> username,  $this -> password, $this -> database);
-            
-        return $conn;        
+//Conexión a la base de datos
+    public static function dbConnection(){
+        $conn = new mysqli(self::$hostname, self::$username, self::$password, self::$database);
+        
+//Mensaje de error en la conexión
+        if ($conn->connect_error) {
+            die("Error en conexión: " . $conn->connect_error);
+        }
+        return $conn;
     }
 }
+    
 ?>
+

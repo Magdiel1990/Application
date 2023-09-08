@@ -7,12 +7,10 @@ session_start();
 
 //Conexión a la base de datos
 require_once ("classes/db_connection.class.php");
+$conn = DBConnection::dbConnection();
 
 //Cálculo de usuarios administradores
 require_once ("classes/admin_users_calc.class.php");
-
-$dbConection = new DBConnection ("localhost:3306", "root", "123456", "courses");
-$conn = $dbConection -> dbConnection ();
 
 // Verificar conexión
 if ($conn->connect_error) {

@@ -10,8 +10,7 @@ class Filter {
     }
 
     public function sanitization() {
-        $dbConection = new DBConnection ("localhost:3306", "root", "123456", "courses");
-        $conn = $dbConection -> dbConnection ();
+        $conn = DBConnection::dbConnection();
 
         $this -> input = mysqli_real_escape_string($conn, $this -> input);   
         $this -> input = htmlspecialchars($this -> input);

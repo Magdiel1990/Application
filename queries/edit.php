@@ -1,12 +1,10 @@
 <?php
 //Conexión a la base de datos
 require_once ("classes/db_connection.class.php");
+$conn = DBConnection::dbConnection();
 
 //Clase de las opciones
 require_once ("classes/role.class.php");
-
-$dbConection = new DBConnection ("localhost:3306", "root", "123456", "courses");
-$conn = $dbConection -> dbConnection ();
 
 require_once("partials/head.php");  
 

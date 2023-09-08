@@ -1,8 +1,9 @@
 <?php
 class AdminUserCalc {
+    //Método para determinar el total de usuarios
     private function totalUsers () {
-        $dbConection = new DBConnection ("localhost:3306", "root", "123456", "courses");
-        $conn = $dbConection -> dbConnection ();
+        //Conexión a la base de datos
+        $conn = DBConnection::dbConnection();
 
         $result = $conn -> query ("SELECT id FROM users;");
 
@@ -10,10 +11,10 @@ class AdminUserCalc {
 
         return $num_rows; 
     }
-
+    //Método para determinar los usuarios que son administradores
     private function adminUsers () {
-        $dbConection = new DBConnection ("localhost:3306", "root", "123456", "courses");
-        $conn = $dbConection -> dbConnection ();
+        //Conexión a la base de datos
+        $conn = DBConnection::dbConnection();
 
         $result = $conn -> query ("SELECT u.id FROM users u JOIN roles r ON r.id = u.role_id WHERE r.role = 'Admin';");
 
@@ -21,7 +22,7 @@ class AdminUserCalc {
 
         return $num_rows; 
     }
-
+    //Método para establecer las condiciones de borrado de usuario
     public function adminCond () {
         $totalCount = $this -> totalUsers();
         $adminCount = $this -> adminUsers();

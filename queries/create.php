@@ -7,11 +7,9 @@ session_start();
 
 //Conexión a la base de datos
 require_once ("classes/db_connection.class.php");
+$conn = DBConnection::dbConnection();
 //Filtro para los inputs
 require_once ("classes/filter.class.php");
-
-$dbConection = new DBConnection ("localhost:3306", "root", "123456", "courses");
-$conn = $dbConection -> dbConnection ();
 
 /***************************Creación de curso***********************************/
 

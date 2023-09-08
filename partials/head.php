@@ -1,8 +1,7 @@
 <?php
 //Conexión a la base de datos
 require_once ("classes/db_connection.class.php");
-$dbConection = new DBConnection("localhost:3306", "root", "123456", "courses");
-$conn = $dbConection -> dbConnection ();
+$conn = DBConnection::dbConnection();
 
 //Nombre de la sesión
 session_name("Login");
