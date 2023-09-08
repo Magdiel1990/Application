@@ -51,7 +51,8 @@
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="email">Correo: </label>
-                                <input class="form-control" type="email" id="email" name="email" required minlength="11" maxlength="70">
+                                <input class="form-control" type="email" id="email" name="email" required minlength="11" maxlength="70
+                                ">
                             </div>
 
                             <div class="mb-3">
