@@ -22,7 +22,7 @@
             <form class="mt-2" id="student_form" method="POST" action="<?php echo root;?>create" autocomplete="on">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title mb-4">Agregar alumno</h5>
+                        <h5 class="card-title mb-4">Agregar usuario</h5>
                         <div class="card-text">
                             <div class="input-group mb-3">
                                 <label class="input-group-text is-required" for="user">Usuario: </label>
@@ -90,18 +90,12 @@
 
                         if($result -> num_rows > 0){
                             while($row = $result -> fetch_assoc()){
-                                //Administradores no pueden eliminarse                    
-                                if($row["role"] == "Admin") {
-                                    $visibility = "style = 'display: none;'";
-                                } else {
-                                    $visibility = "";
-                                }
 
                                 $html = "<tr>";
-                                $html .= "<td class='px-4'>" . ucfirst($row['username']) . "</td>";
+                                $html .= "<td class='px-4'>" . ucfirst($row['username']) . " - " . $row['role'] . "</td>";
                                 $html .= "<td class='text-center'>";
                                 $html .= "<div class='btn-group'>";
-                                $html .= "<a $visibility href='" . root . "delete?userid=" . $row['id'] . "' " . "class='btn btn-danger delBtn' title='Eliminar'>Eliminar</a>";
+                                $html .= "<a href='" . root . "delete?userid=" . $row['id'] . "' " . "class='btn btn-danger delBtn' title='Eliminar'>Eliminar</a>";
                                 $html .= "<a href='" . root . "edit?userid=" . $row['id'] . "' " . "class='btn btn-info' title='Editar'>Editar</a>";
                                 $html .= "<a href='" . root . "edit?assign=" . $row['id'] . "' " . "class='btn btn-warning' title='Agregar curso'>Agregar</a>";
                                 $html .= "</div>";
@@ -111,7 +105,9 @@
                                 $resultCourses = $conn -> query ("SELECT id, name FROM courses_details WHERE userid = '" . $row['id'] . "';");
                                 
                                 while ($rowCourses = $resultCourses -> fetch_assoc()) {
-                                    $html .= "<tr class='bg-light'><td colspan = '2'><a href='" . root . "delete?cursoid=" . $rowCourses['id'] . "' style='text-decoration: none; padding: 18px'>" . $rowCourses['name'] . "</a></td></tr>";
+                                    $html .= "<tr class='bg-light'><td colspan = '2'><a href='" . root . "delete?cursoid=" . $rowCourses['id'] . "' title='eliminar' style='text-decoration: none; padding: 18px'>" . $rowCourses['name'] . "</a>";
+                                    $html .= "<a class='btn btn-success' href='" . root . "certificado?cursoid=" . $rowCourses['id'] . "&userid=" . $row['id'] . "' title='Generar certificado'>Certificado</a>";
+                                    $html .= "</td></tr>";
                                 }
                                 echo $html;
                             }
