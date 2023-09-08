@@ -125,33 +125,64 @@ if(isset($_POST["user"]) && isset($_POST["firstname"]) && isset($_POST["repeat_p
                     header('Location: ' . root . 'alumnos');
                     exit;      
                 } else {
-                    if (strlen($password) < 5 || strlen($password) > 50 || strlen($lastname) < 5 || strlen($lastname) > 40 || strlen($firstname) < 5 || strlen($firstname) > 30 || strlen($username) < 5 || strlen($username) > 30 || strlen($email) < 11 || strlen($email) > 70) {
-                        $_SESSION['message'] = "El nombre es muy largo";
+                    if (strlen($password) < 5 || strlen($password) > 50) {
+                        $_SESSION['message'] = "La contraseña debe tener entre 5 y 50 caracteres";
                         $_SESSION['message_alert'] = "danger";                      
                 
                         header('Location: ' . root . 'alumnos');
                         exit;     
+                    } 
+
+                    if(strlen($lastname) < 5 || strlen($lastname) > 40) {
+                        $_SESSION['message'] = "Apellido debe tener entre 5 y 40 caracteres";
+                        $_SESSION['message_alert'] = "danger";                      
+                
+                        header('Location: ' . root . 'alumnos');
+                        exit;   
+                    }
+
+                    if(strlen($firstname) < 5 || strlen($firstname) > 30) {
+                        $_SESSION['message'] = "Nombre debe tener entre 5 y 30 caracteres";
+                        $_SESSION['message_alert'] = "danger";                      
+                
+                        header('Location: ' . root . 'alumnos');
+                        exit;   
+                    }
+
+                    if(strlen($username) < 5 || strlen($username) > 30) {
+                        $_SESSION['message'] = "Usuario debe tener entre 5 y 30 caracteres";
+                        $_SESSION['message_alert'] = "danger";                      
+                
+                        header('Location: ' . root . 'alumnos');
+                        exit;   
+                    }
+                    if(strlen($email) < 11 || strlen($email) > 70) {
+                        $_SESSION['message'] = "La email debe tener entre 11 y 70 caracteres";
+                        $_SESSION['message_alert'] = "danger";                      
+                
+                        header('Location: ' . root . 'alumnos');
+                        exit;   
+                    }
+
+                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                    $stmt = $conn -> prepare("INSERT INTO users (username, firstname, lastname, password, email, role_id) VALUES (?, ?, ?, ?, ?, ?);"); 
+                    $stmt->bind_param("sssssi", $username, $firstname, $lastname, $hashed_password, $email, $roleid);
+
+                    if($stmt->execute()) {
+                        $_SESSION['message'] = "Usuario agregado correctamente";
+                        $_SESSION['message_alert'] = "success";        
+
+                        header('Location: ' . root . 'alumnos');
+                        exit;
                     } else {
-                        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                        $_SESSION['message'] = "Error al agregar usuario";
+                        $_SESSION['message_alert'] = "danger";        
 
-                        $stmt = $conn -> prepare("INSERT INTO users (username, firstname, lastname, password, email, role_id) VALUES (?, ?, ?, ?, ?, ?);"); 
-                        $stmt->bind_param("sssssi", $username, $firstname, $lastname, $hashed_password, $email, $roleid);
-
-                        if($stmt->execute()) {
-                            $_SESSION['message'] = "Usuario agregado correctamente";
-                            $_SESSION['message_alert'] = "success";        
-
-                            header('Location: ' . root . 'alumnos');
-                            exit;
-                        } else {
-                            $_SESSION['message'] = "Error al agregar usuario";
-                            $_SESSION['message_alert'] = "danger";        
-
-                            header('Location: ' . root . 'alumnos');
-                            exit;
-                        }   
-                    }                
-                }
+                        header('Location: ' . root . 'alumnos');
+                        exit;
+                    }   
+               }
             }
         }
     }
