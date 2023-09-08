@@ -8,6 +8,9 @@ session_start();
 //Conexión a la base de datos
 require_once ("classes/db_connection.class.php");
 
+//Cálculo de usuarios administradores
+require_once ("classes/admin_users_calc.class.php");
+
 $dbConection = new DBConnection ("localhost:3306", "root", "123456", "courses");
 $conn = $dbConection -> dbConnection ();
 
@@ -54,14 +57,25 @@ if(isset($_GET["userid"])) {
 
 //Verificar que ese id existe
     if($conn -> query ("SELECT id FROM users WHERE id = '$userId';")) {
-        $result = $conn -> query ("DELETE FROM users WHERE id = '$userId';");
-        if($result) {
-            $_SESSION['message'] = "Usuario eliminado";
-            $_SESSION['message_alert'] = "success";   
+       
+        $adminCond = new AdminUserCalc ();
+        $adminCond = $adminCond -> adminCond ();
+
+        if($adminCond === true) {
+            $result = $conn -> query ("DELETE FROM users WHERE id = '$userId';");
+            if($result) {
+                $_SESSION['message'] = "Usuario eliminado";
+                $_SESSION['message_alert'] = "success";   
+            
+                header('Location: ' . root . 'alumnos');
+            } else {
+                $_SESSION['message'] = "Error al eliminar este usuario";
+                $_SESSION['message_alert'] = "danger";        
         
-            header('Location: ' . root . 'alumnos');
+                header('Location: ' . root . 'alumnos');
+            }
         } else {
-            $_SESSION['message'] = "Error al eliminar este usuario";
+            $_SESSION['message'] = "Unico usuario Admin ni puede ser eliminado";
             $_SESSION['message_alert'] = "danger";        
     
             header('Location: ' . root . 'alumnos');
