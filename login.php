@@ -70,7 +70,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         <meta name="Keywords" content="cursos, virtual, online, programación">
         <meta property="og:type" content="website">
         <meta name="description" content="Realiza los mejores cursos online de programación">
-        <title>Cursos Gratis</title>
+        <title>Infotep Virtual</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="shortcut icon" href="https://hoy.com.do/wp-content/uploads/2020/03/10-cursos-online-gratuitos-aprender-ingles-810x455.jpg">
         <link rel="stylesheet" href="css/styles.css">

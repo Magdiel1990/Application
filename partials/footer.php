@@ -3,7 +3,7 @@
         <div class="text-white">
             <h6 class="text-white d-inline">
             © <?php echo date('Y'); ?> Copyright:
-            Magdiel Castillo Mills. Todos los derechos reservados.</h6>
+            Magdiel Castillo Mills.</h6>
         </div>
         <div>
     <!-- Facebook -->
