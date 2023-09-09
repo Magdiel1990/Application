@@ -232,8 +232,6 @@ if(isset($_POST["courses"]) && isset($_GET["userid"])) {
 
         require_once ("partials/head.php");
 
-        require_once ("partials/header.php");    
-    
         require_once ("partials/nav.php");  
     
         require_once ("views/error/404.php");

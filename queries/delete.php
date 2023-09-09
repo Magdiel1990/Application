@@ -115,8 +115,6 @@ if(isset($_GET["cursoid"])) {
 
         require_once ("partials/head.php");
 
-        require_once ("partials/header.php");    
-    
         require_once ("partials/nav.php");  
     
         require_once ("views/error/404.php");
